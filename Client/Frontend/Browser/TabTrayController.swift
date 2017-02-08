@@ -569,6 +569,8 @@ class TabTrayController: UIViewController {
         let exitingPrivateMode = !privateMode && profile.prefs.boolForKey("settings.closePrivateTabs") ?? false
         if exitingPrivateMode {
             tabManager.removeAllPrivateTabsAndNotify(false)
+
+            LeanplumIntegration.sharedInstance.track(event: "Close Private Tabs when leaving Private Browsing")
         }
 
         toolbar.maskButton.setSelected(privateMode, animated: true)
@@ -1171,6 +1173,10 @@ extension TabTrayController: MenuActionDelegate {
             case .closeAllTabs:
                 DispatchQueue.main.async {
                     self.closeTabsForCurrentTray()
+                }
+
+                if privateMode {
+                    LeanplumIntegration.sharedInstance.track(event: "Close Private Tabs")
                 }
             case .openTopSites:
                 DispatchQueue.main.async {
