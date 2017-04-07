@@ -45,14 +45,14 @@ class LoginManagerTests: KIFTestCase {
     }
 
     fileprivate func closeLoginManager() {
-        EarlGrey.select(elementWithMatcher: grey_allOfMatchers([grey_accessibilityLabel("Settings"),
-        grey_kindOfClass(NSClassFromString("UINavigationItemButtonView"))]))
+        EarlGrey.select(elementWithMatcher: grey_allOf([grey_accessibilityLabel("Settings"),
+        grey_kindOfClass(NSClassFromString("UINavigationItemButtonView")!)]))
         .perform(grey_tap())
-        EarlGrey.select(elementWithMatcher: grey_allOfMatchers([grey_accessibilityLabel("Done"),
-        grey_kindOfClass(NSClassFromString("UINavigationButton"))]))
+        EarlGrey.select(elementWithMatcher: grey_allOf([grey_accessibilityLabel("Done"),
+        grey_kindOfClass(NSClassFromString("UINavigationButton")!)]))
         .perform(grey_tap())
-        EarlGrey.select(elementWithMatcher: grey_allOfMatchers([grey_accessibilityLabel("home"),
-        grey_kindOfClass(NSClassFromString("Client.TabCell"))]))
+        EarlGrey.select(elementWithMatcher: grey_allOf([grey_accessibilityLabel("home"),
+        grey_kindOfClass(NSClassFromString("Client.TabCell")!)]))
         .perform(grey_tap())
     }
 
@@ -266,8 +266,8 @@ class LoginManagerTests: KIFTestCase {
         EarlGrey.select(elementWithMatcher: grey_accessibilityLabel("Show Tabs")).perform(grey_tap())
         EarlGrey.select(elementWithMatcher: grey_accessibilityLabel("Private Mode")).perform(grey_tap())
         EarlGrey.select(elementWithMatcher: grey_accessibilityLabel("Menu")).perform(grey_tap())
-        EarlGrey.select(elementWithMatcher: grey_allOfMatchers([grey_accessibilityID("SettingsMenuItem"),
-        grey_kindOfClass(NSClassFromString("Client.MenuItemCollectionViewCell"))]))
+        EarlGrey.select(elementWithMatcher: grey_allOf([grey_accessibilityID("SettingsMenuItem"),
+        grey_kindOfClass(NSClassFromString("Client.MenuItemCollectionViewCell")!)]))
             .perform(grey_tap())
         EarlGrey.select(elementWithMatcher: grey_accessibilityLabel("Logins")).perform(grey_tap())
     
